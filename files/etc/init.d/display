@@ -1,0 +1,17 @@
+#!/bin/sh /etc/rc.common
+
+START=96
+PIDF=/var/run/display.pid
+ 
+start() {
+    # /usr/bin/python /root/oled_display/stats.py > /dev/null 2>&1 & echo $! > /var/run/display.pid
+    cd /root/oled_display
+    /usr/bin/python stats.py > /dev/null 2>&1 & echo $! > /var/run/display.pid
+    # /usr/bin/python stats.py
+    # echo $! > $PIDF
+}                 
+ 
+stop() {          
+    kill $(cat $PIDF)
+    rm -f "$PIDF"
+}

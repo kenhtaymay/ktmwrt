@@ -53,17 +53,12 @@ jobs:
         git clone -b $REPO_BRANCH --single-branch $REPO_URL immortalwrt
         ln -sf /workdir/immortalwrt $GITHUB_WORKSPACE/immortalwrt
 
-    # - name: Load custom feeds
-    #   run: |
-    #     [ -e $FEEDS_CONF ] && mv $FEEDS_CONF immortalwrt/feeds.conf.default
-    #     pwd
-    #     ls -la
-    #     echo "feed.conf.default========================================================"
-    #     cat immortalwrt/feeds.conf.default
-    #     echo "========================================================"
-    #     chmod +x $SYS_CONF_SH
-    #     cd immortalwrt
-    #     $GITHUB_WORKSPACE/$SYS_CONF_SH
+    - name: Load custom feeds
+      run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF immortalwrt/feeds.conf.default
+        chmod +x $SYS_CONF_SH
+        cd immortalwrt
+        $GITHUB_WORKSPACE/$SYS_CONF_SH
 
     - name: Update feeds
       run: cd immortalwrt && ./scripts/feeds update -a
@@ -73,7 +68,7 @@ jobs:
 
     - name: Load custom configuration
       run: |
-        # [ -e files ] && mv files immortalwrt/files
+        [ -e files ] && mv files immortalwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE immortalwrt/.config
 
         # chmod +x $PACKS
