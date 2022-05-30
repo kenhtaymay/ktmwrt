@@ -61,7 +61,7 @@ def getTemp():
             for x in range(10):
                 read_temp = int(subprocess.check_output(cmd, shell = True ).decode('utf-8'))
                 temp = (temp+read_temp)/2
-                time.sleep(.25)
+                time.sleep(.5)
             oledQueue.put(lambda: (draw.text((0, 0), (b'\x03\x03\x03').decode("utf-8"),  font=font32, fill=0),draw.text((0, 0), str(int(temp/1000))+(b'\x00').decode('utf-8'),  font=font32, fill=255)))
         except Exception as e:
             printerror("An unknown error occured while get temperature.")
