@@ -1,8 +1,10 @@
 
 <p align="center">
-  <h3 align="center">AIO Router</h3>
+  <h3 align="center">All-In-One Router (KtmWrt)</h3>
   <p align="center">
-    👉 Router made in tự tui với đầy đủ tính năng trong một bo mạch nhỏ gọn [<a herf="https://github.com/kenhtaymay/ktmwrt/releases"> Releases </a>]👈
+    👉 Router made in tự tui với đầy đủ tính năng trong một bo mạch nhỏ gọn[<a herf="https://github.com/kenhtaymay/ktmwrt/releases"> Releases </a>]👈
+    <br />
+    Đây là router dựa trên OpenWrt (<a herf="https://github.com/immortalwrt/immortalwrt">immortalwrt</a>) với rất nhiều tuỳ biến để đáp ứng nhiều nhu cầu khác nhau.
     <br />
     <a href="https://github.com/kenhtaymay/ktmwrt"><strong>Khám phá »</strong></a>
     <br />
@@ -32,8 +34,9 @@
 <br>
 
 ## Tính năng chính
-✨ Hỗ trợ thay đổi TTL dùng với sim Reddi   
-✨ Cài sẵn Docker (có thể cài thêm container home assistant, pihole, ...)   
+✨ Cài sẵn AdBlock và list [hostsVN](https://bigdargon.github.io/hostsVN/)   
+✨ Hỗ trợ toàn bộ các loại USB modem phổ biến và thay đổi sẵn TTL dùng với sim Reddi   
+✨ Cài sẵn Docker (có thể cài thêm container home assistant, pihole, adguard...)   
 ✨ Cài sẵn ShadowSocksR Plus+ (Support SS/SSR/V2RAY/XRAY/TROJAN/NAIVEPROXY/SOCKS5/TUN etc.)   
 ✨ I2C0 sử dụng với màn hình oled ssd1306   
 
@@ -41,6 +44,6 @@
 
 ## Nếu bạn thích bản build này hãy mua cho tôi một tách cafe
 
-![Scan me](/files/root/MoMo.png)
+![Scan me](/files/root/momo.png)
 
 <br>
