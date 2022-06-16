@@ -1,0 +1,90 @@
+#!/bin/sh /etc/rc.common
+START=1OO
+
+PROG=/usr/bin/oled
+
+stop() {
+	kill -2 $(pgrep /usr/bin/oled)
+	kill -9 $(pgrep -f /usr/sbin/netspeed)
+	echo "oled exit..."
+}
+
+start() {
+	enabled=$(uci get oled.@oled[0].enable)
+	if [ $enabled -eq 0 ]; then
+		exit 0
+	fi
+
+	autoswitch=$(uci get oled.@oled[0].autoswitch)
+	from=$(uci get oled.@oled[0].from)
+	to=$(uci get oled.@oled[0].to)
+
+	if [ ${autoswitch} -eq 1 ]; then
+		hour=$(date +"%H")                                                     
+                min=$(date +"%M")                                                                      
+                ihour=`expr $hour + 0`                                    
+                imin=`expr $min + 0`                                                                   
+                now=$(($ihour*60+$imin))                                               
+                if [[ $now -lt $from || $now -gt $to ]]; then
+			stop
+			exit 0
+		fi		
+	fi
+	
+	crontab daemon
+	if ! grep "/etc/init.d/oled \+restart" /etc/crontabs/root >/dev/null 2>&1; then
+		echo "*/15 * * * * /etc/init.d/oled restart >/dev/null 2>&1" >> /etc/crontabs/root
+	fi
+
+	speedtesttime=$(uci get oled.@oled[0].speedtesttime)
+
+	nohup /usr/sbin/netspeed ${speedtesttime} >/dev/null 2>&1 &
+	nohup ${PROG} 1 > /dev/null 2>&1 &
+}
+
+ 
+
+
+restart(){
+	enabled=$(uci get oled.@oled[0].enable)
+	pgrep -f ${PROG} >/dev/null
+	if [ $? -eq 0 ]; then
+		if [ $enabled -eq 1 ]; then
+			autoswitch=$(uci get oled.@oled[0].autoswitch)
+			from=$(uci get oled.@oled[0].from)
+			to=$(uci get oled.@oled[0].to)
+			if [ ${autoswitch} -eq 1 ]; then
+				hour=$(date +"%H")                                                     
+                                min=$(date +"%M")                                      
+                                ihour=`expr $hour + 0`                                                 
+                                imin=`expr $min + 0`                      
+                                now=$(($ihour*60+$imin))                                               
+                                if [[ $now -lt $from || $now -gt $to ]]; then
+					stop
+					exit 0
+				fi		
+			fi
+
+			speedtesttime=$(uci get oled.@oled[0].speedtesttime)
+
+			kill -9 $(pgrep /usr/bin/oled)
+			kill -9 $(pgrep -f /usr/sbin/netspeed)
+
+			nohup /usr/sbin/netspeed ${speedtesttime} >/dev/null 2>&1 &
+			nohup ${PROG} 0 > /dev/null 2>&1 &
+		else
+			stop
+		fi
+
+	else
+		if [ $enabled -eq 1 ]; then
+			start
+		else
+			exit 0
+		fi
+	fi	
+}
+
+boot(){
+	start
+}

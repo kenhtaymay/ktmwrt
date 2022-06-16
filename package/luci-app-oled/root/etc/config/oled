@@ -1,0 +1,6 @@
+config oled
+	option enable '0'
+	option from '0'
+	option to '1440'
+	option autoswitch '0'
+	option speedtesttime '900'

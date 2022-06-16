@@ -1,0 +1,7 @@
+#!/bin/ash
+
+while [ 1 == 1 ] ; do
+        date +%s > /tmp/netspeed
+        speedtest-cli --simple | cut -d ':' -f2,3 | sed 's/it\///g' >> /tmp/netspeed
+        sleep $1
+done

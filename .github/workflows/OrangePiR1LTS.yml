@@ -70,7 +70,8 @@ jobs:
       run: |
         [ -e files ] && mv files immortalwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE immortalwrt/.config
-
+        rm -rf immortalwrt/feeds/luci/applications/luci-app-oled
+        mv package/luci-app-oled immortalwrt/feeds/luci/applications/
         chmod +x $PACKS
         cd immortalwrt/package
         $GITHUB_WORKSPACE/$PACKS
