@@ -63,6 +63,7 @@ int main(int argc, char *argv[])
     // signal(SIGTERM, BreakDeal);
     /* Run SDD1306 Initialization Sequence */
     if (needinit==1) {
+        display_Init_seq();
     /* Clear display */
         clearDisplay();
 
