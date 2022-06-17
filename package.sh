@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Add modeminfo
-git clone --depth=1 https://github.com/koshev-msk/luci-app-modeminfo
-
 # Add luci-app-smstools3
 git clone --depth=1 https://github.com/koshev-msk/luci-app-smstools3
 

@@ -1,6 +1,12 @@
 #!/bin/ash
 
 while [ 1 == 1 ] ; do
+        CHECK=0
+        while [ $CHECK -eq 0 ]
+        do
+                ping -c 1 -W 3 google.com && CHECK=1
+                sleep 1
+        done
         date +%s > /tmp/netspeed
         speedtest-cli --simple | cut -d ':' -f2,3 | sed 's/it\///g' >> /tmp/netspeed
         sleep $1
