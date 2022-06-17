@@ -6,4 +6,5 @@ git clone --depth=1 https://github.com/koshev-msk/luci-app-smstools3
 # Add luci-app-mmconfig : configure modem cellular bands via mmcli utility
 git clone --depth=1 https://github.com/koshev-msk/luci-app-mmconfig
 
-mv ../../package/luci-app-ktm-oled .
+echo $PWD
+mv $GITHUB_WORKSPACE/package/luci-app-ktm-oled .
