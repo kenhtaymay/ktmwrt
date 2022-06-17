@@ -10,7 +10,7 @@ on:
         default: 'false'
 
 env:
-  OPNAME: 'Orange Pi R1 Plus LTS'
+  OPNAME: 'Raspberry Pi 4'
   REPO_URL: 'https://github.com/immortalwrt/immortalwrt.git'
   REPO_BRANCH: 'openwrt-21.02'
   FEEDS_CONF: feeds.conf.default
