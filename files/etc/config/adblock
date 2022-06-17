@@ -12,3 +12,7 @@ config adblock 'global'
 	option adb_dns 'dnsmasq'
 	option adb_fetchutil 'curl'
 	list adb_sources 'reg_vn'
+	option adb_trigger 'wan'
+	option adb_backupdir '/etc/adblock/backup'
+	option adb_fetchinsecure '1'
+
