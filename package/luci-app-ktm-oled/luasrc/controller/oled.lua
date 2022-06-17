@@ -4,12 +4,12 @@ function index()
 	if not nixio.fs.access("/etc/config/oled") then
 		return
 	end
-	local page = entry({"admin", "services", "oled"}, alias("admin", "services", "oled", "setting"),_("OLED"))
+	local page = entry({"admin", "services", "ktm-oled"}, alias("admin", "services", "ktm-oled", "setting"),_("KTM Oled"))
 	page.order = 10
 	page.dependent = true
 	page.acl_depends = { "luci-app-oled" }
-	entry({"admin", "services", "oled", "status"}, call("act_status"))
-	entry({"admin", "services", "oled", "setting"}, cbi("oled/setting"),_("Setting"),30).leaf = true
+	entry({"admin", "services", "ktm-oled", "status"}, call("act_status"))
+	entry({"admin", "services", "ktm-oled", "setting"}, cbi("oled/setting"))
 end
 
 function act_status()

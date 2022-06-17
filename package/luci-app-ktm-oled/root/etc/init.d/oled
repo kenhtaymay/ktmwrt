@@ -37,9 +37,10 @@ start() {
 	fi
 
 	speedtesttime=$(uci get oled.@oled[0].speedtesttime)
+	i2cdevice=$(uci get oled.@oled[0].i2cdevice)
 
 	nohup /usr/sbin/netspeed ${speedtesttime} >/dev/null 2>&1 &
-	nohup ${PROG} 1 > /dev/null 2>&1 &
+	nohup ${PROG} "${i2cdevice}" 1 > /dev/null 2>&1 &
 }
 
  
@@ -66,12 +67,13 @@ restart(){
 			fi
 
 			speedtesttime=$(uci get oled.@oled[0].speedtesttime)
+			i2cdevice=$(uci get oled.@oled[0].i2cdevice)
 
 			kill -9 $(pgrep /usr/bin/oled)
 			kill -9 $(pgrep -f /usr/sbin/netspeed)
 
 			nohup /usr/sbin/netspeed ${speedtesttime} >/dev/null 2>&1 &
-			nohup ${PROG} 0 > /dev/null 2>&1 &
+			nohup ${PROG} "${i2cdevice}" 0 > /dev/null 2>&1 &
 		else
 			stop
 		fi

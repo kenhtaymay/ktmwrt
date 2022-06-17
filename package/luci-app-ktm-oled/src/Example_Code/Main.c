@@ -44,10 +44,12 @@ FILE *fp;
 
 int main(int argc, char *argv[])
 {
-    int needinit=atoi(argv[1]);
+
+    char *i2cdevice=argv[1];   
+    int needinit=atoi(argv[2]);
 
     /* Initialize I2C bus and connect to the I2C Device */
-    if (init_i2c_dev(I2C_DEV0_PATH, SSD1306_OLED_ADDR) == 0)
+    if (init_i2c_dev(i2cdevice, SSD1306_OLED_ADDR) == 0)
     {
         printf("(Main)i2c-2: Bus Connected to SSD1306\r\n");
     }

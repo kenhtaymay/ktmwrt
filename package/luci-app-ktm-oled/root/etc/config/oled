@@ -4,3 +4,4 @@ config oled
 	option to '1440'
 	option autoswitch '0'
 	option speedtesttime '900'
+	option i2cdevice '/dev/i2c-1'
