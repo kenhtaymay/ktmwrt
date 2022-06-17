@@ -1,5 +1,4 @@
-m = Map("oled", translate("KTM Oled"), translate("Tích hợp màn hình oled display (SSD1306, 0.91', 128X64) cho OpenWrt.<br /> Được [[<a href="https://www.youtube.com/c/taymay" target="_blank">Kênh Táy Máy</a>]] xây dựng từ dự án: ")..[[<a href="https://github.com/natelol/luci-app-oled" target="_blank">luci-app-oled</a>]])
-
+m = Map("oled", translate("KTM Oled"), translate("A LuCI app that helps you config your oled display (SSD1306, 0.91', 128X32) with screensavers! <br />Edited by Kenh Tay May<br /> Any issues, please go to: ")..[[<a href="https://github.com/natelol/luci-app-oled" target="_blank">luci-app-oled</a>]])
 --m.chain("luci")
 
 m:section(SimpleSection).template="oled/status"
