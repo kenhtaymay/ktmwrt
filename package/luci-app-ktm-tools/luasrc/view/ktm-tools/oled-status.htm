@@ -1,5 +1,5 @@
 <script type="text/javascript">//<![CDATA[
-XHR.poll(3, '<%=url([[admin]], [[services]], [[ktm-oled]], [[status]])%>', null,
+XHR.poll(3, '<%=url([[admin]], [[services]], [[ktm-tools]], [[oled-status]])%>', null,
 	function(x, data) {
 		var tb = document.getElementById('oled_status');
 		if (data && tb) {

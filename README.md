@@ -23,6 +23,7 @@
 |           Thiết bị hỗ trợ        |         Danh mục         |        Action         |              Tải xuống          |
 | :------------------------: | :---------------------: | :-------------------: | :--------------------------: |
 | Orange Pi R1 Plus LTS | [immortalwrt](https://github.com/immortalwrt/immortalwrt) | [🍕](https://github.com/kenhtaymay/ktmwrt/actions/workflows/OrangePiR1LTS.yml) | [✔](https://github.com/kenhtaymay/ktmwrt/releases) |
+| Raspberry Pi 4 | [immortalwrt](https://github.com/immortalwrt/immortalwrt) | [🍕](https://github.com/kenhtaymay/ktmwrt/actions/workflows/OrangePiR1LTS.yml) | [✔](https://github.com/kenhtaymay/ktmwrt/releases) |
 
 <br>
 
@@ -35,10 +36,14 @@
 
 ## Tính năng chính
 ✨ Cài sẵn AdBlock và list [hostsVN](https://bigdargon.github.io/hostsVN/)   
-✨ Hỗ trợ toàn bộ các loại USB modem phổ biến và thay đổi sẵn TTL dùng với sim Reddi   
+✨ Hỗ trợ toàn bộ các loại USB modem phổ biến   
+✨ KTM Tools:
+  - Thay đổi TTL nhanh chóng trên LUCI
+  - Chế màn hình oled I2C hiển thị thông tin trực quan
+
+
 ✨ Cài sẵn Docker (có thể cài thêm container home assistant, pihole, adguard...)   
 ✨ Cài sẵn ShadowSocksR Plus+ (Support SS/SSR/V2RAY/XRAY/TROJAN/NAIVEPROXY/SOCKS5/TUN etc.)   
-✨ I2C0 sử dụng với màn hình oled ssd1306   
 
 <br>
 

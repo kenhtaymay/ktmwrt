@@ -3,21 +3,36 @@ START=1OO
 
 PROG=/usr/bin/oled
 
-stop() {
+stop_oled() {
 	kill -2 $(pgrep /usr/bin/oled)
 	kill -9 $(pgrep -f /usr/sbin/netspeed)
-	echo "oled exit..."
 }
 
-start() {
-	enabled=$(uci get oled.@oled[0].enable)
-	if [ $enabled -eq 0 ]; then
+stop_ttl() {
+	iptables-save | grep -v "\[KTM-Tools\] --ttl-set" | iptables-restore
+}
+
+stop() {
+	stop_ttl
+	stop_oled
+}
+
+start_ttl() {
+	if [ $(uci get ktm-tools.@ttl[0].enable) -eq 1 ]; then
+		interface=$(uci get ktm-tools.@ttl[0].interface)
+		ttlset=$(uci get ktm-tools.@ttl[0].ttlset)
+		iptables -t mangle -I POSTROUTING -o $interface -m comment --comment "[KTM-Tools] --ttl-set" -j TTL --ttl-set $ttlset
+	fi
+}
+
+start_oled(){
+	if [ $(uci get ktm-tools.@oled[0].enable) -eq 0 ]; then
 		exit 0
 	fi
 
-	autoswitch=$(uci get oled.@oled[0].autoswitch)
-	from=$(uci get oled.@oled[0].from)
-	to=$(uci get oled.@oled[0].to)
+	autoswitch=$(uci get ktm-tools.@oled[0].autoswitch)
+	from=$(uci get ktm-tools.@oled[0].from)
+	to=$(uci get ktm-tools.@oled[0].to)
 
 	if [ ${autoswitch} -eq 1 ]; then
 		hour=$(date +"%H")                                                     
@@ -31,30 +46,37 @@ start() {
 		fi		
 	fi
 	
-	crontab daemon
+	# crontab daemon
 	if ! grep "/etc/init.d/oled \+restart" /etc/crontabs/root >/dev/null 2>&1; then
 		echo "*/15 * * * * /etc/init.d/oled restart >/dev/null 2>&1" >> /etc/crontabs/root
 	fi
 
-	speedtesttime=$(uci get oled.@oled[0].speedtesttime)
-	i2cdevice=$(uci get oled.@oled[0].i2cdevice)
+	speedtesttime=$(uci get ktm-tools.@oled[0].speedtesttime)
+	i2cdevice=$(uci get ktm-tools.@oled[0].i2cdevice)
 
 	nohup /usr/sbin/netspeed ${speedtesttime} >/dev/null 2>&1 &
 	nohup ${PROG} "${i2cdevice}" 1 > /dev/null 2>&1 &
 }
 
+start() {
+	start_ttl
+	start_oled
+}
+
  
+restart_ttl(){
+	stop_ttl
+	start_ttl
+}
 
-
-restart(){
-	enabled=$(uci get oled.@oled[0].enable)
+restart_oled(){
 	pgrep -f ${PROG} >/dev/null
 	if [ $? -eq 0 ]; then
-		if [ $enabled -eq 1 ]; then
-			autoswitch=$(uci get oled.@oled[0].autoswitch)
-			from=$(uci get oled.@oled[0].from)
-			to=$(uci get oled.@oled[0].to)
+		if [ $(uci get ktm-tools.@oled[0].enable) -eq 1 ]; then
+			autoswitch=$(uci get ktm-tools.@oled[0].autoswitch)
 			if [ ${autoswitch} -eq 1 ]; then
+				from=$(uci get ktm-tools.@oled[0].from)
+				to=$(uci get ktm-tools.@oled[0].to)
 				hour=$(date +"%H")                                                     
                                 min=$(date +"%M")                                      
                                 ihour=`expr $hour + 0`                                                 
@@ -66,8 +88,8 @@ restart(){
 				fi		
 			fi
 
-			speedtesttime=$(uci get oled.@oled[0].speedtesttime)
-			i2cdevice=$(uci get oled.@oled[0].i2cdevice)
+			speedtesttime=$(uci get ktm-tools.@oled[0].speedtesttime)
+			i2cdevice=$(uci get ktm-tools.@oled[0].i2cdevice)
 
 			kill -9 $(pgrep /usr/bin/oled)
 			kill -9 $(pgrep -f /usr/sbin/netspeed)
@@ -75,16 +97,21 @@ restart(){
 			nohup /usr/sbin/netspeed ${speedtesttime} >/dev/null 2>&1 &
 			nohup ${PROG} "${i2cdevice}" 0 > /dev/null 2>&1 &
 		else
-			stop
+			stop_oled
 		fi
 
 	else
-		if [ $enabled -eq 1 ]; then
-			start
+		if [ $(uci get ktm-tools.@oled[0].enable) -eq 1 ]; then
+			start_oled
 		else
 			exit 0
 		fi
 	fi	
+}
+
+restart(){
+	restart_ttl
+	restart_oled
 }
 
 boot(){

@@ -1,0 +1,10 @@
+config oled
+        option i2cdevice '/dev/i2c-1'
+        option autoswitch '0'
+        option speedtesttime '900'
+        option enable '0'
+
+config ttl
+        option ttlset '65'
+        option interface 'eth1'
+        option enable '0'
