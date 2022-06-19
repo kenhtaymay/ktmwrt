@@ -7,4 +7,4 @@ git clone --depth=1 https://github.com/koshev-msk/luci-app-smstools3
 git clone --depth=1 https://github.com/koshev-msk/luci-app-mmconfig
 
 echo $PWD
-mv $GITHUB_WORKSPACE/package/luci-app-ktm-oled .
+mv $GITHUB_WORKSPACE/package/luci-app-ktm-tools .
