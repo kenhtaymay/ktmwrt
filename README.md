@@ -23,6 +23,7 @@
 |           Thiết bị hỗ trợ        |         Danh mục         |        Action         |              Tải xuống          |
 | :------------------------: | :---------------------: | :-------------------: | :--------------------------: |
 | Orange Pi R1 Plus LTS | [immortalwrt](https://github.com/immortalwrt/immortalwrt) | [🍕](https://github.com/kenhtaymay/ktmwrt/actions/workflows/OrangePiR1LTS.yml) | [✔](https://github.com/kenhtaymay/ktmwrt/releases) |
+| Orange Pi Zero | [immortalwrt](https://github.com/immortalwrt/immortalwrt) | [🍕](https://github.com/kenhtaymay/ktmwrt/actions/workflows/OrangePiR1LTS.yml) | [✔](https://github.com/kenhtaymay/ktmwrt/releases) |
 | Raspberry Pi 4 | [immortalwrt](https://github.com/immortalwrt/immortalwrt) | [🍕](https://github.com/kenhtaymay/ktmwrt/actions/workflows/OrangePiR1LTS.yml) | [✔](https://github.com/kenhtaymay/ktmwrt/releases) |
 
 <br>
