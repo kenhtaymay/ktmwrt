@@ -11,7 +11,7 @@ on:
 
 env:
   OPNAME: 'Orange Pi Zero'
-  REPO_URL: 'https://github.com/immortalwrt/immortalwrt.git'
+  REPO_URL: 'https://github.com/melsem/openwrt.git'
   REPO_BRANCH: 'openwrt-21.02'
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: configs/OPiZero.config
