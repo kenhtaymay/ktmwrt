@@ -22,7 +22,8 @@
 ## Thiết bị hỗ trợ
 |           Thiết bị hỗ trợ        |         Danh mục         |        Action         |              Tải xuống          |
 | :------------------------: | :---------------------: | :-------------------: | :--------------------------: |
-| Orange Pi R1 Plus LTS | [immortalwrt](https://github.com/immortalwrt/immortalwrt) | [🍕](https://github.com/kenhtaymay/ktmwrt/actions/workflows/OrangePiR1LTS.yml) | [✔](https://github.com/kenhtaymay/ktmwrt/releases) |
+| Orange Pi Zero LTS | [immortalwrt](https://github.com/immortalwrt/immortalwrt) | [🍕](https://github.com/kenhtaymay/ktmwrt/actions/workflows/OrangePiR1LTS.yml) | [✔](https://github.com/kenhtaymay/ktmwrt/releases) |
+| ~~Orange Pi R1 Plus LTS~~ | [immortalwrt](https://github.com/immortalwrt/immortalwrt) | [🍕](https://github.com/kenhtaymay/ktmwrt/actions/workflows/OrangePiR1LTS.yml) | [✔](https://github.com/kenhtaymay/ktmwrt/releases) |
 | Raspberry Pi 4 | [immortalwrt](https://github.com/immortalwrt/immortalwrt) | [🍕](https://github.com/kenhtaymay/ktmwrt/actions/workflows/OrangePiR1LTS.yml) | [✔](https://github.com/kenhtaymay/ktmwrt/releases) |
 | Raspberry Pi Zero W (B/B+/CM/Zero/ZeroW) | [immortalwrt](https://github.com/immortalwrt/immortalwrt) | [🍕](https://github.com/kenhtaymay/ktmwrt/actions/workflows/OrangePiR1LTS.yml) | [✔](https://github.com/kenhtaymay/ktmwrt/releases) |
 
@@ -42,9 +43,9 @@
   - Thay đổi TTL nhanh chóng trên LUCI
   - Chế màn hình oled I2C hiển thị thông tin trực quan
 
-
 ✨ Cài sẵn Docker (có thể cài thêm container home assistant, pihole, adguard...)   
-✨ Cài sẵn ShadowSocksR Plus+ (Support SS/SSR/V2RAY/XRAY/TROJAN/NAIVEPROXY/SOCKS5/TUN etc.)   
+✨ Cài sẵn Passwall   
+✨ ~~Cài sẵn ShadowSocksR Plus+ (Support SS/SSR/V2RAY/XRAY/TROJAN/NAIVEPROXY/SOCKS5/TUN etc.)~~   
 
 <br>
 
