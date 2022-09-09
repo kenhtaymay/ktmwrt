@@ -8,3 +8,4 @@ git clone --depth=1 https://github.com/koshev-msk/luci-app-mmconfig
 
 echo $PWD
 mv $GITHUB_WORKSPACE/package/luci-app-ktm-tools .
+mv $GITHUB_WORKSPACE/package/xradio .
